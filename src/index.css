@@ -1,13 +1,155 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/*
+Favicon Colors
+Pink
+#FA8089
+#FA4A58
+#F82F40
+
+Green
+#A2E540
+#8CC636
+#82B633
+*/
+
+:root {
+  --first-color: #FA8089;
+  --second-color: #FA4A58;
+  --third-color: #A2E540;
+  --fourth-color: #82B633;
+}
+@media (prefers-color-scheme: dark) {
+  /* user prefers dark mode */
+  :root {
+    --background: #111111;
+    --background2: #222222;
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@media (prefers-color-scheme: light) {
+  /* userprefers light mode, or has no preference */
+  :root {
+    --background: #dddddd;
+    --background2: #ffffff;
+  }
+}
+
+img.logo {
+  width: 4rem;
+}
+*::selection {
+  color: var(--background2);
+  background-color: var(--first-color);
+}
+
+body {
+  text-align: center;
+  background-color: var(--background2);
+}
+/* Hide Arrow Down nad Arrow Up, on input[type=number] */
+input[type="number"] {
+  -webkit-appearance: textfield;
+     -moz-appearance: textfield;
+          appearance: textfield;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none;
+}
+
+.custom-field, option {
+  position: relative;
+  font-size: 1.25rem;
+  padding-top: 10px;
+  margin-bottom: 5px;
+}
+.custom-field input, select, button{
+  cursor: pointer;
+  border: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: var(--first-color);
+  padding: .75rem;
+  border-radius: .5rem;
+  background-color: transparent;
+  border: 2px solid var(--background);
+  min-width: 6rem;
+  outline: none;
+}
+.custom-field input:focus {
+  border-color: var(--first-color);
+  transition-delay: 0.1s;
+}
+.custom-field {
+  gap: .5rem;
+  --draw-easing: .3s;
+}
+input[type=submit], input[type=reset] {
+  cursor: pointer;
+
+  border: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: .75rem;
+  border-radius: .5rem;
+  width: 10rem;
+  outline: none;
+}
+input[type=submit] {
+  font-weight: bold;
+  color: var(--background2);
+  background: linear-gradient(
+    to bottom right,
+    var(--second-color), var(--first-color));
+}
+input[type=reset] {
+  color: var(--second-color);
+  border: 2px solid var(--background);
+  background-color: var(--background2);
+}
+
+p.title {
+  text-align: center;
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: var(--second-color);
+}
+p.subtitle, th {
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: var(--second-color);
+}
+p.desc, td {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--first-color);
+}
+p, output {
+  color: var(--first-color);
+}
+.button {
+  padding: 10px;
+}
+
+select::selection{
+  border: 1rem;
+  border-color: var(--second-color);
+}
+.result.hide {
+  display: none;
+}
+.result.show {
+  text-align: center;
+  display: block;
+  margin: 2rem 0 2rem 0;
+}
+
+table, th, td {
+  text-align: center;
+  padding: .25rem;
+  border: 2px solid var(--background);
 }
