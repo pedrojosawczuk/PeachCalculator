@@ -3,3 +3,16 @@
   <h1 align="center">Peach Calculator<h3 align="center">Calculator of Equivalent Resistance, Potency, Current and Voltages over resistors R1, R2 and R3. 👨‍💻</h3>
 </p>
 
+## Input
+
+- Select what is the circuit type:
+  - Series
+  - Parallel
+  - Combinations of Series and Parallel 1
+  - Combinations of Series and Parallel 2
+- Input tension value
+- Input resistor values
+
+## Output
+
+- Table with the values of equivalent resistance, voltage, current and potency in each resistor
