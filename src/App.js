@@ -19,49 +19,51 @@ function App() {
   return (
   <>
     <div className="container">
-      <img src={logo} className="logo" alt="peach logo" />
+      <img src={logo} className="logo" alt="Peach Icons" />
       <p className="title">Peach Calculator</p>
-      <p className="desc">Calculator of Equivalent Resistance, Potency, Current and Voltages over resistors R1, R2 and R3</p>
+      <p className="desc">Calculator of Equivalent Resistance, Potency, Current and Voltages over resistors R1, R2 and R3.</p>
       <form>
         {/* Resistors Input */}
-        <label className="custom-field">
-          <input
-            type="number"
-            name="r1"
-            min="1"
-            max="9999"
-            placeholder="Resistor 1"
-            title="Value Between 1Ω and 9999Ω"
-            required
-            onChange={handleChange}
-          />
-        </label>
-        <label className="custom-field">
-          <input
-            type="number"
-            name="r2"
-            min="1"
-            max="9999"
-            placeholder="Resistor 2"
-            title="Value Between 1Ω and 9999Ω"
-            required
-            onChange={handleChange}
-          />
-        </label>
-        <label className="custom-field">
-          <input
-            type="number"
-            name="r3"
-            min="1"
-            max="9999"
-            placeholder="Resistor 3"
-            title="Value Between 1Ω and 9999Ω"
-            required
-            onChange={handleChange}
-          />
-        </label>
+        <div className="row">
+          <label className="custom-field">
+            <input
+              type="number"
+              name="r1"
+              min="1"
+              max="9999"
+              placeholder="Resistor 1"
+              title="Value Between 1Ω and 9999Ω"
+              required
+              onChange={handleChange}
+            />
+          </label>
+          <label className="custom-field">
+            <input
+              type="number"
+              name="r2"
+              min="1"
+              max="9999"
+              placeholder="Resistor 2"
+              title="Value Between 1Ω and 9999Ω"
+              required
+              onChange={handleChange}
+            />
+          </label>
+          <label className="custom-field">
+            <input
+              type="number"
+              name="r3"
+              min="1"
+              max="9999"
+              placeholder="Resistor 3"
+              title="Value Between 1Ω and 9999Ω"
+              required
+              onChange={handleChange}
+            />
+          </label>
+        </div>
         <div className="result hide"> {/* style="display: none;" */} 
-          {/* Outputs */}
+          {/* Output */}
           <table align="center">
             <tr>
               <th> </th>
@@ -94,6 +96,7 @@ function App() {
               <td>peqVal</td>
             </tr>
           </table>
+          {/*
           <p className="subtitle">Current</p>
           <output name="i1ValLabel" placeholder="">Current i1</output>
           <output name="i2ValLabel" placeholder="">Current i2</output>
@@ -108,43 +111,50 @@ function App() {
           <output name="p1ValLabel" placeholder="">Potency r1</output>
           <output name="p2ValLabel" placeholder="">Potency r2</output>
           <output name="p3ValLabel" placeholder="">Potency r3</output>
+          */}
         </div>
-        <br />
-        <label className="custom-field">
-          <input
-            type="number"
-            placeholder="Tension"
-            title="Value Between 1V and 12V"
-            name="e"
-            min="1"
-            max="12"
-            required
-            onChange={handleChange}
-          />
-        </label>
-        <br />
+        <div className="row">
+          <label className="custom-field">
+            <input
+              type="number"
+              placeholder="Tension"
+              title="Value Between 1V and 12V"
+              name="e"
+              min="1"
+              max="12"
+              required
+              onChange={handleChange}
+            />
+          </label>
+        </div>
         {/* Circuit Type Input */}
-        <label className="custom-field">
-          <select name="circuits" required onChange={handleChange}>
-            <option value="S">Series</option>
-            <option value="P">Parallel</option>
-            <option value="M1">Combinations of Series and Parallel 1</option>
-            <option value="M2">Combinations of Series and Parallel 2</option>
-          </select>
-        </label>
-        <br />
+        <div className="row">
+          <label className="custom-field">
+            <select name="circuits" required onChange={handleChange}>
+              <option value="S">Series</option>
+              <option value="P">Parallel</option>
+              <option value="M1">Combinations of Series and Parallel 1</option>
+              <option value="M2">Combinations of Series and Parallel 2</option>
+            </select>
+          </label>
+        </div>
         {/* Submit and Reset Buttons */}
-        <input type="submit" />
-        <input type="reset" />
+        <div className="row">
+          <label className="custom-field">
+            <input type="submit" />
+          </label>
+          <label className="custom-field">
+            <input type="reset" />
+          </label>
+        </div>
       </form>
-      {/* Footer */}
-      {/*
-      <footer>
-        <a href="https://www.flaticon.com/free-icons/peach" title="peach icons">Peach icons created by Freepik - Flaticon</a>
-      </footer>
-      */}
-      <br />
     </div>
+    {/* Footer */}
+    {/*
+    <footer>
+      <a href="https://www.flaticon.com/free-icons/peach" title="peach icons">Peach icons created by Freepik - Flaticon</a>
+    </footer>
+    */}
   </>
   );
 }
