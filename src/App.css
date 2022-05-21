@@ -17,20 +17,46 @@ Green
   --third-color: #A2E540;
   --fourth-color: #82B633;
 }
-@media (prefers-color-scheme: dark) {
-  /* user prefers dark mode */
-  :root {
-    --background: #111111;
-    --background2: #222222;
-  }
+
+.container-light {
+  --background: #dddddd;
+  --background2: #ffffff;
+}
+.container-dark {
+  --background: #333333;
+  --background2: #111111;
+}
+body {
+  margin: 0;
+  padding: 10;
+  width: 100vw;
+  height: 100%;
+  background-color: var(--background2);
+}
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: var(--background2);
 }
 
-@media (prefers-color-scheme: light) {
-  /* userprefers light mode, or has no preference */
-  :root {
-    --background: #dddddd;
-    --background2: #ffffff;
-  }
+.content {
+  positon: relative;
+  width: 90%;
+  max-width: 700px;
+  display: flex;
+  margin: auto;
+  /*
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  */
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
 *::selection {
@@ -38,38 +64,15 @@ Green
   background-color: var(--first-color);
 }
 
-body {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  margin: 0%;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  background-color: var(--background2);
-}
 .root {
   width: 100%;
   height: 100%;
 }
-.container {
-  max-width: 600px;
-  width: 90%;
-  display: flex;
-  margin: auto;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-}
 img.logo {
   width: 20%;
+  margin: 2%;
   min-width: 100px;
-}
-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
+  max-width: 140px;
 }
 
 .row {
@@ -161,20 +164,17 @@ p.title {
   font-weight: bold;
   color: var(--second-color);
 }
-p.subtitle, th {
-  margin: 0;
-  max-width: 500px;
-  text-align: center;
-  font-size: 1.25rem;
-  font-weight: bold;
-  color: var(--second-color);
-}
 p.desc, td {
   text-align: center;
   font-size: 1rem;
   color: var(--first-color);
 }
-p {
+footer {
+  text-align: center;
+  font-size: .75rem;
+  color: var(--first-color);
+}
+th {
   color: var(--first-color);
 }
 
@@ -183,6 +183,7 @@ select::selection{
   font-size: 1rem;
   border-color: var(--second-color);
 }
+
 .result.hide {
   display: none;
 }
@@ -196,17 +197,75 @@ table, th, td {
   padding: .25rem;
   border: 2px solid var(--background);
 }
+
+footer {
+  /*
+  position: absolute;
+  */
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem 0 1rem 0;
+  width: 100%;
+  color: var(--first-color);
+  /*display: flex;*/
+  text-align: center;
+  background-color: var(--background2);
+}
+
 a {
   color: var(--background);
 }
 a:visited {
   color: var(--background);
 }
-footer {
-  width: 100%;
-  padding: 1rem 0 1rem 0;
-  margin: 0;
-  /*display: flex;*/
-  text-align: center;
-  background-color: var(--first-color);
+
+.link {
+  font-weight: bold;
+  color: var(--second-color);
+}
+.link:visited {
+  font-weight: bold;
+  color: var(--second-color);
+}
+
+div.switch {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 30px;
+  transform:translate(-50%,-50%);
+}
+div.lightswitch {
+  margin: .25rem;
+}
+.lightswitch label {
+  display: block;
+  width: 4.0rem;
+  height: 2rem;
+  background: #aaa;
+  border-radius: 2.50rem;
+  transition:all 300ms linear;
+}
+.lightswitch label:before {
+  position: relative;
+  content: "";
+  width: 1.50rem;
+  height: 1.50rem;
+  background: var(--background2);
+  display: block;
+  border-radius: 50px;
+  top: 3px;
+  left: 5px;
+  transition: all 300ms linear;
+  content: "🌛";
+}
+.lightswitch input:checked + label {
+  background: var(--background);
+}
+.lightswitch input:checked + label:before {
+  left: 35px;
+}
+.lightswitch input {
+  display:none;
 }
