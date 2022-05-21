@@ -10,7 +10,7 @@ function LightSwitch() {
     <div className={userMode ? `switch dark` : `switch light`}>
       <div className="lightswitch">
         <input type="checkbox" id="toggle-btn-1" onClick={handleClick} />
-        <label for="toggle-btn-1"></label>
+        <label htmlFor="toggle-btn-1"></label>
       </div>
     </div>
   )
