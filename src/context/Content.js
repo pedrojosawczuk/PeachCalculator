@@ -99,36 +99,40 @@ function Content() {
       <div className="result hide">
         {/* Output */}
         <table align="center">
-          <tr>
-            <th> </th>
-            <th> Tension <br/> V </th>
-            <th> Current <br/> A </th>
-            <th> Potency <br/> W </th>
-          </tr>
-          <tr>
-            <td>R1 = </td>
-            <td>i1Val</td>
-            <td>t1Val</td>
-            <td>p1Val</td>
-          </tr>
-          <tr>
-            <td>R2 = </td>
-            <td>i2Val</td>
-            <td>t2Val</td>
-            <td>p2Val</td>
-          </tr>
-          <tr>
-            <td>R3 = </td>
-            <td>i3Val</td>
-            <td>t3Val</td>
-            <td>p3Val</td>
-          </tr>
-          <tr>
-            <td>Req = </td>
-            <td>ieqVal</td>
-            <td>teqVal</td>
-            <td>peqVal</td>
-          </tr>
+          <thead>
+            <tr>
+              <th> </th>
+              <th> Tension <br/> V </th>
+              <th> Current <br/> A </th>
+              <th> Potency <br/> W </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>R1 = </td>
+              <td>i1Val</td>
+              <td>t1Val</td>
+              <td>p1Val</td>
+            </tr>
+            <tr>
+              <td>R2 = </td>
+              <td>i2Val</td>
+              <td>t2Val</td>
+              <td>p2Val</td>
+            </tr>
+            <tr>
+              <td>R3 = </td>
+              <td>i3Val</td>
+              <td>t3Val</td>
+              <td>p3Val</td>
+            </tr>
+            <tr>
+              <td>Req = </td>
+              <td>ieqVal</td>
+              <td>teqVal</td>
+              <td>peqVal</td>
+            </tr>
+          </tbody>
         </table>
         {/*
         <p className="desc">
