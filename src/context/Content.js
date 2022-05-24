@@ -18,14 +18,15 @@ function Content() {
     localStorage.setItem("mode", "light");
   }
 
-  function handleChange() {
+  const handleChange = event => {
   }
-  function handleSubmit() {
-    const {r1, r2, r3, circuit, tension} = req;
+  const handleSubmit = event => {
+    event.preventDeafult();
+    const {r1, r2, r3, tension, circuit} = req;
 
     let req;
-    let current;
-    let potency;
+    let current; // current = tension / req
+    let potency; // potency = tension * current
     let i1, i2, i3;
     let t1, t2, t3;
     let p1, p2, p3;
@@ -33,30 +34,44 @@ function Content() {
     switch(circuit) {
       case "S":
         console.log("S - Series");
-
+        req = parseInt(r1) + parseInt(r2) + parseInt(r3);
+        current = tension / req;
+        i1 = i2 = i3 = current;
+        t1 = r1 * current;
+        t2 = r2 * current;
+        t3 = r3 * current;
+        p1 = t1 * current;
+        p2 = t2 * current;
+        p3 = t3 * current;
+        potency = tension * current;
         break;
+
       case "P":
         console.log("P - Parallel");
-
         break;
+
       case "M1":
         console.log("M1 - Combinations of Series and Parallel 1");
-        
         break;
+
       case "M2":
         console.log("M2 - Combinations of Series and Parallel 1");
-        
         break;
+        
       default:
         console.log('Circuit %d does not exist!', circuit);
     }
   }
+  
+  let r1, r2, r3, req, current, tension, potency, i1, i2, i3, t1, t2, t3, p1, p2, p3;
+  r1 = r2 = r3 = req = current = tension = potency = i1 = i2 = i3 = t1 = t2 = t3 = p1 = p2 = p3 = 0;
+  
   return (
   <div className="content">
     <img src={logo} className="logo" alt="Peach Icons" />
     <p className="title">Peach Calculator</p>
     <p className="desc">Calculator of Equivalent Resistance, Potency, Current and Voltages over resistors R1, R2 and R3.</p>
-    <form>
+    <form onSubmit={handleSubmit}>
       {/* Resistors Input */}
       <div className="row">
         <label className="custom-field">
@@ -96,7 +111,7 @@ function Content() {
           />
         </label>
       </div>
-      <div className="result hide">
+      <div className="result show">
         {/* Output */}
         <table align="center">
           <thead>
@@ -109,28 +124,28 @@ function Content() {
           </thead>
           <tbody>
             <tr>
-              <td>R1 = </td>
-              <td>i1Val</td>
-              <td>t1Val</td>
-              <td>p1Val</td>
+              <td>R1 = {r1.toFixed(2)}Ω</td>
+              <td>{i1.toFixed(2)}A</td>
+              <td>{t1.toFixed(2)}V</td>
+              <td>{p1.toFixed(2)}W</td>
             </tr>
             <tr>
-              <td>R2 = </td>
-              <td>i2Val</td>
-              <td>t2Val</td>
-              <td>p2Val</td>
+              <td>R2 = {r2.toFixed(2)}Ω</td>
+              <td>{i2.toFixed(2)}A</td>
+              <td>{t2.toFixed(2)}V</td>
+              <td>{p2.toFixed(2)}W</td>
             </tr>
             <tr>
-              <td>R3 = </td>
-              <td>i3Val</td>
-              <td>t3Val</td>
-              <td>p3Val</td>
+              <td>R3 = {r3.toFixed(2)}Ω</td>
+              <td>{i3.toFixed(2)}A</td>
+              <td>{t3.toFixed(2)}V</td>
+              <td>{p3.toFixed(2)}W</td>
             </tr>
             <tr>
-              <td>Req = </td>
-              <td>ieqVal</td>
-              <td>teqVal</td>
-              <td>peqVal</td>
+              <td>Req = {req.toFixed(2)}Ω</td>
+              <td>{current.toFixed(2)}A</td>
+              <td>{tension.toFixed(2)}V</td>
+              <td>{potency.toFixed(2)}W</td>
             </tr>
           </tbody>
         </table>
