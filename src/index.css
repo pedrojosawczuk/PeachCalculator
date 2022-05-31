@@ -121,7 +121,7 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none;
 }
-input[type=submit], input[type=reset] {
+.btn {
   cursor: pointer;
   border: none;
   -webkit-appearance: none;
@@ -131,17 +131,24 @@ input[type=submit], input[type=reset] {
   width: 6rem;
   outline: none;
 }
-input[type=submit] {
+.btn-primary {
   font-weight: bold;
   color: var(--background2);
   background: linear-gradient(
     to bottom right,
     var(--second-color), var(--first-color));
 }
-input[type=reset] {
-  color: var(--second-color);
+.btn-primary:disabled,
+.btn-primary[disabled] {
+  cursor: auto;
+  color: var(--background2);
+  border: 2px solid var(--background2);
+  background: var(--background);
+}
+.btn-secondary {
+  color: var(--first-color);
   border: 2px solid var(--background);
-  background-color: var(--background2);
+  background: var(--background2);
 }
 
 @media(max-width: 500px) {
@@ -155,7 +162,7 @@ input[type=reset] {
     min-width: 6rem;
     outline: none;
   }
-  input[type=submit], input[type=reset] {
+  .btn {
     width: 5rem;
   }
 }
@@ -187,10 +194,7 @@ select::selection{
   border-color: var(--second-color);
 }
 
-.output.hide {
-  display: none;
-}
-.output.show {
+.output {
   text-align: center;
   display: block;
 }
@@ -232,6 +236,11 @@ a:visited {
   color: var(--second-color);
 }
 
+.errormessage {
+  text-align: center;
+  font-weight: bold;
+  color: var(--second-color);
+}
 div.switch {
   position: absolute;
   top: 0;
