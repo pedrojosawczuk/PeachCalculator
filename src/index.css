@@ -69,13 +69,16 @@ body {
   height: 100%;
 }
 header {
+  display: flex;
   text-align: center;
+  flex-direction: row;
+  align-items: center;
 }
 img.logo {
   width: 20%;
   margin: 2%;
-  min-width: 100px;
-  max-width: 120px;
+  min-width: 70px;
+  max-width: 70px;
 }
 
 .row {

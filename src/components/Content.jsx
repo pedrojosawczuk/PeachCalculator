@@ -114,7 +114,7 @@ const handleSubmit = event => {
     'Circuit : ' + circuit
   )
 }
-const handleReset = event => {
+const handleReset = () => {
   setBtnDisabled(true)
   setR1(0)
   setR2(0)
@@ -126,6 +126,7 @@ const handleReset = event => {
 
   return (
   <div className="content">
+    <p className="desc">Calculator of Equivalent Resistance, Potency, Current and Voltages over resistors R1, R2 and R3.</p>
     <form onSubmit={ handleSubmit } onReset={ handleReset }>
       {/* Resistors Input */}
       <div className="row">
