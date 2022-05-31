@@ -22,8 +22,7 @@ function App() {
     <div className='container container-dark'/*className={userMode ? `container container-dark` : `container container-light`}*/>
       <Header
         logo={ logo }
-        title='Peach Calculator'
-        desc='Calculator of Equivalent Resistance, Potency, Current and Voltages over resistors R1, R2 and R3.'/>
+        title='Peach Calculator' />
       <Content />
       <Footer />
     </div>
