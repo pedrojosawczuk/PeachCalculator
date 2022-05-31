@@ -1,7 +1,9 @@
-import React from 'react';
-import logo from '../logo.png';
+import { useState } from 'react';
+import Output from './Output';
+import Button from './shared/Button';
 
 function Content() {
+/*
   let userMode = localStorage.getItem("mode");
   if (userMode !== null) {
     try {
@@ -17,175 +19,194 @@ function Content() {
     console.log("Prefers: " + "Dark");
     localStorage.setItem("mode", "light");
   }
+*/
 
-  const handleChange = event => {
-  }
-  const handleSubmit = event => {
-    event.preventDeafult();
-    const {r1, r2, r3, tension, circuit} = req;
+const [r1, setR1] = useState(0);
+const [r2, setR2] = useState(0);
+const [r3, setR3] = useState(0)
+const [tension, setTension] = useState(0)
+const [circuit, setCircuit] = useState('S');
 
-    let req;
-    let current; // current = tension / req
-    let potency; // potency = tension * current
-    let i1, i2, i3;
-    let t1, t2, t3;
-    let p1, p2, p3;
+const [btnDisabled, setBtnDisabled] = useState(true)
+const [errorMessage, setErrorMessage] = useState(null);
 
-    switch(circuit) {
-      case "S":
-        console.log("S - Series");
-        req = parseInt(r1) + parseInt(r2) + parseInt(r3);
-        current = tension / req;
-        i1 = i2 = i3 = current;
-        t1 = r1 * current;
-        t2 = r2 * current;
-        t3 = r3 * current;
-        p1 = t1 * current;
-        p2 = t2 * current;
-        p3 = t3 * current;
-        potency = tension * current;
+const [output, setOutput] = useState(0);
+
+const handleChange = (event) => {
+  if ( event.target.value >= 1 && event.target.value <= 9999) {
+    switch(event.target.name) {
+      case 'r1':
+        setR1(parseInt(event.target.value))
+        setErrorMessage(null)
         break;
-
-      case "P":
-        console.log("P - Parallel");
-        break;
-
-      case "M1":
-        console.log("M1 - Combinations of Series and Parallel 1");
-        break;
-
-      case "M2":
-        console.log("M2 - Combinations of Series and Parallel 1");
-        break;
-        
+      case 'r2':
+        setR2(parseInt(event.target.value))
+        setErrorMessage(null)
+      break;
+      case 'r3':
+        setR3(parseInt(event.target.value))
+        setErrorMessage(null)
+      break;
+      case 'tension':
+        if ( event.target.value >= 1 && event.target.value <= 12 ) {
+          setTension(parseInt(event.target.value))
+          setErrorMessage(null)
+        }
+        else {
+          event.target.value = ''
+          setBtnDisabled(true)
+          setErrorMessage('ERROR: Tension Value is not Between 1V and 12V')
+        }
+      break;
       default:
-        console.log('Circuit %d does not exist!', circuit);
+        setBtnDisabled(true)
+        console.log('ERROR: ' + event.target.name)
+      break;
+    }
+    if (r1 >=1 && r1 <= 9999) {
+      if (r2 >=1 && r2 <= 9999) {
+        if (r3 >=1 && r3 <= 9999) {
+          if (tension >=1 && tension <= 12) {
+            setBtnDisabled(false)
+          }
+          else {
+            setBtnDisabled(true)
+          }
+        }
+        else {
+          setBtnDisabled(true)
+        }
+      }
+      else {
+        setBtnDisabled(true)
+      }
+    }
+    else {
+      setBtnDisabled(true)
     }
   }
+  else {
+    event.target.value = ''
+    setBtnDisabled(true)
+  }
+  /*
+  else if ( event.target.name == 'r1' || 'r2' || 'r3' ) {
+    if ( event.target.value >= 1 && event.target.value < 10000 ) {
+    }
+    else {
+      event.target.value = ''
+      setErrorMessage(`ERROR: Resistance ${ event.target.name } Value is not Between 1Ω and 9999Ω`)
+    }
+  }
+  else if ( event.target.value == 'S' || 'P' || 'M1' || 'M2'){
+    setCircuit(event.target.name)
+  }*/
   
-  let r1, r2, r3, req, current, tension, potency, i1, i2, i3, t1, t2, t3, p1, p2, p3;
-  r1 = r2 = r3 = req = current = tension = potency = i1 = i2 = i3 = t1 = t2 = t3 = p1 = p2 = p3 = 0;
-  
+}
+const handleSubmit = event => {
+  event.preventDefault();
+  setOutput(1)
+  console.log(
+    'R1 : ' + r1,
+    'R2 : ' + r2,
+    'R3 : ' + r3,
+    'Tension : ' + tension,
+    'Circuit : ' + circuit
+  )
+}
+const handleReset = event => {
+  setBtnDisabled(true)
+  setR1(0)
+  setR2(0)
+  setR3(0)
+  setOutput(0)
+  setTension(0)
+  setCircuit('S')
+}
+
   return (
   <div className="content">
-    <img src={logo} className="logo" alt="Peach Icons" />
-    <p className="title">Peach Calculator</p>
-    <p className="desc">Calculator of Equivalent Resistance, Potency, Current and Voltages over resistors R1, R2 and R3.</p>
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={ handleSubmit } onReset={ handleReset }>
       {/* Resistors Input */}
       <div className="row">
         <label className="custom-field">
           <input
-            type="number"
-            name="r1"
-            min="1"
-            max="9999"
-            placeholder="Resistor 1"
-            title="Value Between 1Ω and 9999Ω"
+            type='number'
+            name='r1'
+            min='1'
+            max='9999'
+            placeholder='Resistor 1'
+            title='Value Between 1Ω and 9999Ω'
             required
-            onChange={handleChange}
+            onChange={ handleChange }
           />
         </label>
         <label className="custom-field">
           <input
-            type="number"
-            name="r2"
-            min="1"
-            max="9999"
-            placeholder="Resistor 2"
-            title="Value Between 1Ω and 9999Ω"
+            type='number'
+            name='r2'
+            min='1'
+            max='9999'
+            placeholder='Resistor 2'
+            title='Value Between 1Ω and 9999Ω'
             required
-            onChange={handleChange}
+            onChange={ handleChange }
           />
         </label>
         <label className="custom-field">
           <input
-            type="number"
-            name="r3"
-            min="1"
-            max="9999"
-            placeholder="Resistor 3"
-            title="Value Between 1Ω and 9999Ω"
+            type='number'
+            name='r3'
+            min='1'
+            max='9999'
+            placeholder='Resistor 3'
+            title='Value Between 1Ω and 9999Ω'
             required
-            onChange={handleChange}
+            onChange={ handleChange }
           />
         </label>
-      </div>
-      <div className="result show">
-        {/* Output */}
-        <table align="center">
-          <thead>
-            <tr>
-              <th> </th>
-              <th> Tension <br/> V </th>
-              <th> Current <br/> A </th>
-              <th> Potency <br/> W </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>R1 = {r1.toFixed(2)}Ω</td>
-              <td>{i1.toFixed(2)}A</td>
-              <td>{t1.toFixed(2)}V</td>
-              <td>{p1.toFixed(2)}W</td>
-            </tr>
-            <tr>
-              <td>R2 = {r2.toFixed(2)}Ω</td>
-              <td>{i2.toFixed(2)}A</td>
-              <td>{t2.toFixed(2)}V</td>
-              <td>{p2.toFixed(2)}W</td>
-            </tr>
-            <tr>
-              <td>R3 = {r3.toFixed(2)}Ω</td>
-              <td>{i3.toFixed(2)}A</td>
-              <td>{t3.toFixed(2)}V</td>
-              <td>{p3.toFixed(2)}W</td>
-            </tr>
-            <tr>
-              <td>Req = {req.toFixed(2)}Ω</td>
-              <td>{current.toFixed(2)}A</td>
-              <td>{tension.toFixed(2)}V</td>
-              <td>{potency.toFixed(2)}W</td>
-            </tr>
-          </tbody>
-        </table>
-        {/*
-        <p className="desc">
-        </p>
-        */}
       </div>
       <div className="row">
         <label className="custom-field">
           <input
-            type="number"
-            placeholder="Tension"
-            title="Value Between 1V and 12V"
-            name="e"
-            min="1"
-            max="12"
+            type='number'
+            placeholder='Tension'
+            title='Value Between 1V and 12V'
+            name='tension'
+            min='1'
+            max='12'
             required
-            onChange={handleChange}
+            onChange={ handleChange }
           />
         </label>
       </div>
+      <Output
+        displayOutput={ output }
+        circuit={ circuit }
+        r1={ r1 }
+        r2={ r2 }
+        r3={ r3 }
+        tension={ tension } />
       {/* Circuit Type Input */}
       <div className="row">
         <label className="custom-field">
-          <select name="circuits" required onChange={handleChange}>
-            <option value="S">Series</option>
-            <option value="P">Parallel</option>
-            <option value="M1">Combinations of Series and Parallel 1</option>
-            <option value="M2">Combinations of Series and Parallel 2</option>
+          <select name="circuits" required onChange={ handleChange }>
+            <option value='S'>Series</option>
+            <option value='P'>Parallel</option>
+            <option value='M1'>Combinations of Series and Parallel 1</option>
+            <option value='M2'>Combinations of Series and Parallel 2</option>
           </select>
         </label>
       </div>
+      { errorMessage && <div className='errormessage'> { errorMessage }</div>}
       {/* Submit and Reset Buttons */}
       <div className="row">
         <label className="custom-field">
-          <input type="submit" />
+          <Button type='submit' version='primary' isDisabled={ btnDisabled } >Submit</Button>
+          {/*<input type="submit" />*/}
         </label>
-        <label className="custom-field">
-          <input type="reset" />
+        <label className="custom-field"><Button type='reset' version='secondary' >Reset</Button>
+          {/*<input type="reset" onClick={ handleReset }/>*/}
         </label>
       </div>
     </form>
