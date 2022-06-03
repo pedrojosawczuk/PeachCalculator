@@ -110,7 +110,7 @@ img.logo {
 .custom-field {
   --draw-easing: .3s;
 }
-.custom-field input:focus {
+.custom-field input:focus, select:focus {
   border-color: var(--first-color);
   transition-delay: 0.1s;
 }
@@ -141,6 +141,10 @@ input[type=number]::-webkit-outer-spin-button {
     to bottom right,
     var(--second-color), var(--first-color));
 }
+.btn-primary:focus {
+  border-color: var(--background);
+  transition-delay: 0.1s;
+}
 .btn-primary:disabled,
 .btn-primary[disabled] {
   cursor: auto;
@@ -152,6 +156,10 @@ input[type=number]::-webkit-outer-spin-button {
   color: var(--first-color);
   border: 2px solid var(--background);
   background: var(--background2);
+}
+.btn-secondary:focus {
+  border-color: var(--first-color);
+  transition-delay: 0.1s;
 }
 
 @media(max-width: 500px) {
