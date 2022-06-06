@@ -1,30 +1,29 @@
 /*
 Favicon Colors
 Pink
-#FA8089
-#FA4A58
-#F82F40
+#FA8089 = rgba(250, 128, 137, 1)
+#FA4A58 = rgba(250, 74, 88, 1)
+#F82F40 = rgba(248, 47, 64, 1)
 
 Green
-#A2E540
-#8CC636
-#82B633
+#A2E540 = rgba(162, 229, 64, 1)
+#8CC636 = rgba(140, 198, 54, 1)
+#82B633 = rgba(130, 182, 51, 1)
 */
-
 :root {
-  --first-color: #FA8089;
-  --second-color: #FA4A58;
-  --third-color: #A2E540;
-  --fourth-color: #82B633;
+  --first-color: rgba(250, 128, 137, 1);
+  --second-color: rgba(250, 74, 88, 1);
+  --third-color: rgba(162, 229, 64, 1);
+  --fourth-color: rgba(130, 182, 51, 1);
 }
 
 .container-light {
-  --background: #dddddd;
-  --background2: #ffffff;
+  --background: rgba(221, 221, 221, 1);
+  --background2: rgba(255, 255, 255, 1);
 }
 .container-dark {
-  --background: #333333;
-  --background2: #111111;
+  --background: rgba(51, 51, 51, 1);
+  --background2: rgba(17, 17, 17, 1);
 }
 body {
   margin: 0;
@@ -74,7 +73,7 @@ header {
   flex-direction: row;
   align-items: center;
 }
-img.logo {
+.logo {
   width: 20%;
   margin: 2%;
   min-width: 70px;
@@ -178,14 +177,14 @@ input[type=number]::-webkit-outer-spin-button {
   }
 }
 
-p.title {
+.title {
   margin: 0;
   text-align: center;
   font-size: 1.75rem;
   font-weight: bold;
   color: var(--second-color);
 }
-p.desc, td {
+.desc, td {
   text-align: center;
   font-size: 1rem;
   color: var(--first-color);
