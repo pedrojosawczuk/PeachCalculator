@@ -3,71 +3,48 @@ import Output from './Output';
 import Button from './shared/Button';
 
 function Content() {
-/*
-  let userMode = localStorage.getItem("mode");
-  if (userMode !== null) {
-    try {
-      console.log("Prefers: " + "Dark");
-      userPrefers(localStorage.getItem("mode"));
-    }
-    catch {
-      console.log("[ ERROR ] Catch localStorage");
-    }
-  }
+  const [r1, setR1] = useState(0);
+  const [r2, setR2] = useState(0);
+  const [r3, setR3] = useState(0)
+  const [tension, setTension] = useState(0)
+  const [circuit, setCircuit] = useState('S');
 
-  function userPrefers() {
-    console.log("Prefers: " + "Dark");
-    localStorage.setItem("mode", "light");
-  }
-*/
+  const [btnDisabled, setBtnDisabled] = useState(true)
+  const [errorMessage, setErrorMessage] = useState(null);
 
-const [r1, setR1] = useState(0);
-const [r2, setR2] = useState(0);
-const [r3, setR3] = useState(0)
-const [tension, setTension] = useState(0)
-const [circuit, setCircuit] = useState('S');
+  const [output, setOutput] = useState(0);
 
-const [btnDisabled, setBtnDisabled] = useState(true)
-const [errorMessage, setErrorMessage] = useState(null);
+  const handleChange = (event) => {
+    const min = 1, max = 10000;
 
-const [output, setOutput] = useState(0);
-
-const handleChange = (event) => {
-  if ( event.target.value >= 1 && event.target.value <= 9999) {
     switch(event.target.name) {
       case 'r1':
-        setR1(parseInt(event.target.value))
-        setErrorMessage(null)
+        setR1(parseFloat(validate(event, min, max)))
         break;
       case 'r2':
-        setR2(parseInt(event.target.value))
-        setErrorMessage(null)
+        setR2(parseFloat(validate(event, min, max)))
       break;
       case 'r3':
-        setR3(parseInt(event.target.value))
-        setErrorMessage(null)
+        setR3(parseFloat(validate(event, min, max)))
       break;
       case 'tension':
-        if ( event.target.value >= 1 && event.target.value <= 12 ) {
-          setTension(parseInt(event.target.value))
-          setErrorMessage(null)
-        }
-        else {
-          event.target.value = ''
-          setBtnDisabled(true)
-          setErrorMessage('ERROR: Tension Value is not Between 1V and 12V')
-        }
+        setTension(parseFloat(validate(event, min, 12)))
+      break;
+      case 'circuits':
+        setCircuit(event.target.value)
       break;
       default:
-        setBtnDisabled(true)
-        console.log('ERROR: ' + event.target.name)
+        handleReset()
       break;
     }
-    if (r1 >=1 && r1 <= 9999) {
-      if (r2 >=1 && r2 <= 9999) {
-        if (r3 >=1 && r3 <= 9999) {
-          if (tension >=1 && tension <= 12) {
+
+    // Show/Hide Submit Button //
+    if ( r1 >= min && r1 < max ) {
+      if ( r2 >= min && r2 < max ) {
+        if ( r3 >= min && r3 < max ) {
+          if ( tension >= min && tension <= 12 ) {
             setBtnDisabled(false)
+            console.log('BtnDisabled:' + btnDisabled)
           }
           else {
             setBtnDisabled(true)
@@ -85,44 +62,53 @@ const handleChange = (event) => {
       setBtnDisabled(true)
     }
   }
-  else {
-    event.target.value = ''
-    setBtnDisabled(true)
-  }
-  /*
-  else if ( event.target.name == 'r1' || 'r2' || 'r3' ) {
-    if ( event.target.value >= 1 && event.target.value < 10000 ) {
+  const validate = (event, min, max) => {
+    if (event.target.value % 1 == 0) {
+      if ( event.target.value >= min && event.target.value <= max ){
+        setErrorMessage(null)
+        return event.target.value
+      }
+      else {
+        event.target.value = ''
+        setErrorMessage(`ERROR: ${ event.target.name.charAt(0).toUpperCase() + event.target.name.slice(1) } Value is not Between ${ min } and ${ max }!`)
+        return event.target.value = ''
+      }
     }
     else {
-      event.target.value = ''
-      setErrorMessage(`ERROR: Resistance ${ event.target.name } Value is not Between 1Ω and 9999Ω`)
+      setErrorMessage(`ERROR: ${ event.target.name.charAt(0).toUpperCase() + event.target.name.slice(1) } Value can't be a float number!`)
+      return event.target.value = 0
     }
   }
-  else if ( event.target.value == 'S' || 'P' || 'M1' || 'M2'){
-    setCircuit(event.target.name)
-  }*/
-  
-}
-const handleSubmit = event => {
-  event.preventDefault();
-  setOutput(1)
-  console.log(
-    'R1 : ' + r1,
-    'R2 : ' + r2,
-    'R3 : ' + r3,
-    'Tension : ' + tension,
-    'Circuit : ' + circuit
-  )
-}
-const handleReset = () => {
-  setBtnDisabled(true)
-  setR1(0)
-  setR2(0)
-  setR3(0)
-  setOutput(0)
-  setTension(0)
-  setCircuit('S')
-}
+
+  const handleSubmit = event => {
+    event.preventDefault();
+
+    if ( r1 !== '' && r2 !== '' && r3 !== '' && tension !== '' && circuit !== '' ) {
+      setOutput(1)
+    }
+    
+    console.log(
+      'R1:' + r1,
+      '\nR2:' + r2,
+      '\nR3:' + r3,
+      '\nTension:' + tension,
+      '\nCircuit:' + circuit
+    )
+  }
+  const handleReset = () => {
+    setOutput(0)
+    setR1(0)
+    setR2(0)
+    setR3(0)
+    setTension(0)
+    setCircuit('S')
+    setBtnDisabled(true)
+    document.getElementById('r1').value = 0
+    document.getElementById('r2').value = 0
+    document.getElementById('r3').value = 0
+    document.getElementById('tension').value = 0
+    document.getElementById('circuits').value = 'S'
+  }
 
   return (
   <div className="content">
@@ -133,6 +119,7 @@ const handleReset = () => {
         <label className="custom-field">
           <input
             type='number'
+            id='r1'
             name='r1'
             min='1'
             max='9999'
@@ -145,6 +132,7 @@ const handleReset = () => {
         <label className="custom-field">
           <input
             type='number'
+            id='r2'
             name='r2'
             min='1'
             max='9999'
@@ -157,6 +145,7 @@ const handleReset = () => {
         <label className="custom-field">
           <input
             type='number'
+            id='r3'
             name='r3'
             min='1'
             max='9999'
@@ -171,11 +160,12 @@ const handleReset = () => {
         <label className="custom-field">
           <input
             type='number'
-            placeholder='Tension'
-            title='Value Between 1V and 12V'
+            id='tension'
             name='tension'
             min='1'
             max='12'
+            placeholder='Tension'
+            title='Value Between 1V and 12V'
             required
             onChange={ handleChange }
           />
@@ -191,7 +181,7 @@ const handleReset = () => {
       {/* Circuit Type Input */}
       <div className="row">
         <label className="custom-field">
-          <select name="circuits" required onChange={ handleChange }>
+          <select id='circuits' name="circuits" required onChange={ handleChange }>
             <option value='S'>Series</option>
             <option value='P'>Parallel</option>
             <option value='M1'>Combinations of Series and Parallel 1</option>
@@ -204,10 +194,9 @@ const handleReset = () => {
       <div className="row">
         <label className="custom-field">
           <Button type='submit' version='primary' isDisabled={ btnDisabled } >Submit</Button>
-          {/*<input type="submit" />*/}
         </label>
-        <label className="custom-field"><Button type='reset' version='secondary' >Reset</Button>
-          {/*<input type="reset" onClick={ handleReset }/>*/}
+        <label className="custom-field">
+          <Button type='reset' version='secondary' >Reset</Button>
         </label>
       </div>
     </form>
