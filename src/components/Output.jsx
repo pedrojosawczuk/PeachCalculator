@@ -78,28 +78,28 @@ function Output({ displayOutput, circuit, r1, r2, r3, tension }) {
         </thead>
         <tbody>
           <tr>
-            <td>R1 = { isNaN(r1.toFixed(3)) ? 0 : r1.toFixed(3) }Ω</td>
-            <td>{ isNaN(t1.toFixed(3)) ? 0 : t1.toFixed(3) }V</td>
-            <td>{ isNaN(i1.toFixed(3)) ? 0 : i1.toFixed(3) }A</td>
-            <td>{ isNaN(p1.toFixed(3)) ? 0 : p1.toFixed(3) }W</td>
+            <td>R1 = { isNaN(r1.toFixed(3)) ? 0 : r1.toFixed(3) } Ω</td>
+            <td>{ isNaN(t1.toFixed(3)) ? 0 : t1.toFixed(3) } V</td>
+            <td>{ isNaN(i1.toFixed(3)) ? 0 : i1.toFixed(3) } A</td>
+            <td>{ isNaN(p1.toFixed(3)) ? 0 : p1.toFixed(3) } W</td>
           </tr>
           <tr>
-            <td>R2 = { isNaN(r2.toFixed(3)) ? 0 : r2.toFixed(3) }Ω</td>
-            <td>{ isNaN(t2.toFixed(3)) ? 0 : t2.toFixed(3) }V</td>
-            <td>{ isNaN(i2.toFixed(3)) ? 0 : i2.toFixed(3) }A</td>
-            <td>{ isNaN(p2.toFixed(3)) ? 0 : p2.toFixed(3) }W</td>
+            <td>R2 = { isNaN(r2.toFixed(3)) ? 0 : r2.toFixed(3) } Ω</td>
+            <td>{ isNaN(t2.toFixed(3)) ? 0 : t2.toFixed(3) } V</td>
+            <td>{ isNaN(i2.toFixed(3)) ? 0 : i2.toFixed(3) } A</td>
+            <td>{ isNaN(p2.toFixed(3)) ? 0 : p2.toFixed(3) } W</td>
           </tr>
           <tr>
-            <td>R3 = { isNaN(r3.toFixed(3)) ? 0 : r3.toFixed(3) }Ω</td>
-            <td>{ isNaN(t3.toFixed(3)) ? 0 : t3.toFixed(3) }V</td>
-            <td>{ isNaN(i3.toFixed(3)) ? 0 : i3.toFixed(3) }A</td>
-            <td>{ isNaN(p3.toFixed(3)) ? 0 : p3.toFixed(3) }W</td>
+            <td>R3 = { isNaN(r3.toFixed(3)) ? 0 : r3.toFixed(3) } Ω</td>
+            <td>{ isNaN(t3.toFixed(3)) ? 0 : t3.toFixed(3) } V</td>
+            <td>{ isNaN(i3.toFixed(3)) ? 0 : i3.toFixed(3) } A</td>
+            <td>{ isNaN(p3.toFixed(3)) ? 0 : p3.toFixed(3) } W</td>
           </tr>
           <tr>
-            <td>Req = { isNaN(req.toFixed(3)) ? 0 : req.toFixed(3) }Ω</td>
-            <td>{ isNaN(tension.toFixed(3)) ? 0 : tension.toFixed(3) }V</td>
-            <td>{ isNaN(current.toFixed(3)) ? 0 : current.toFixed(3) }A</td>
-            <td>{ isNaN(potency.toFixed(3)) ? 0 : potency.toFixed(3) }W</td>
+            <td>Req = { isNaN(req.toFixed(3)) ? 0 : req.toFixed(3) } Ω</td>
+            <td>{ isNaN(tension.toFixed(3)) ? 0 : tension.toFixed(3) } V</td>
+            <td>{ isNaN(current.toFixed(3)) ? 0 : current.toFixed(3) } A</td>
+            <td>{ isNaN(potency.toFixed(3)) ? 0 : potency.toFixed(3) } W</td>
           </tr>
         </tbody>
       </table>
