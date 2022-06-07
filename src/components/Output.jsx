@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 function Output({ displayOutput, circuit, r1, r2, r3, tension }) {
   let req;
   let current; // current = tension / req
-  let potency; // potency = tension * current
+  let power; // power = tension * current
   let i1, i2, i3;
   let t1, t2, t3;
   let p1, p2, p3;
