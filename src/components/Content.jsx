@@ -112,7 +112,7 @@ function Content() {
 
   return (
   <div className="content">
-    <p className="desc">Calculator of Equivalent Resistance, Potency, Current and Voltages over resistors R1, R2 and R3.</p>
+    <p className="desc">Calculator of Equivalent Resistance, Power, Currents and Voltages over resistors R1, R2 and R3.</p>
     <form onSubmit={ handleSubmit } onReset={ handleReset }>
       {/* Resistors Input */}
       <div className="row">
