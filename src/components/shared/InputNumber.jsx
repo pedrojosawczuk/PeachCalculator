@@ -18,4 +18,13 @@ function InputNumber({ id_name, min, max, placeholder, title, onChange }) {
   )
 }
 
+InputNumber.propTypes = {
+  id_name: PropTypes.string.isRequired,
+  min: PropTypes.number,
+  max: PropTypes.number,
+  placeholder: PropTypes.string,
+  title: PropTypes.string,
+  onChange: PropTypes.string,
+}
+
 export default InputNumber
