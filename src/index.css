@@ -211,7 +211,7 @@ select::selection{
 
 table, th, td {
   text-align: center;
-  padding: .25rem;
+  padding: .5rem;
   border: 2px solid var(--background);
 }
 
