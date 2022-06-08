@@ -20,15 +20,15 @@ function Output({ displayOutput, circuit, r1, r2, r3, tension }) {
     case 'S':
       //console.log("S - Series");
       req = parseInt(r1) + parseInt(r2) + parseInt(r3);
-      current = tension / req;
+      current = (tension / req) * 1000;
       i1 = i2 = i3 = current;
-      t1 = r1 * i1;
-      t2 = r2 * i2;
-      t3 = r3 * i3;
+      t1 = (r1 * i1) / 1000;
+      t2 = (r2 * i2) / 1000;
+      t3 = (r3 * i3) / 1000;
       p1 = t1 * i1;
       p2 = t2 * i2;
       p3 = t3 * i3;
-      potency = tension * current;
+      power = tension * current;
       break;
 
     case 'P':
@@ -38,15 +38,15 @@ function Output({ displayOutput, circuit, r1, r2, r3, tension }) {
           (1 / r2) +
           (1 / r3)
         );
-      current = tension / req;
+      current = (tension / req) * 1000;
       t1 = t2 = t3 = tension;
-      i1 = t1 / r1;
-      i2 = t2 / r2;
-      i3 = t3 / r3;
+      i1 = (t1 / r1) * 1000;
+      i2 = (t2 / r2) * 1000;
+      i3 = (t3 / r3) * 1000;
       p1 = t1 * i1;
       p2 = t2 * i2;
       p3 = t3 * i3;
-      potency = tension * current;
+      power = tension * current;
       break;
 
     case 'M1':
@@ -70,36 +70,41 @@ function Output({ displayOutput, circuit, r1, r2, r3, tension }) {
       <table align="center">
         <thead>
           <tr>
-            <th> </th>
+            <th></th>
+            <th> Resistance <br/> Ω </th>
             <th> Tension <br/> V </th>
-            <th> Current <br/> A </th>
-            <th> Potency <br/> W </th>
+            <th> Current <br/> mA </th>
+            <th> Power <br/> mW </th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>R1 = { isNaN(r1.toFixed(3)) ? 0 : r1.toFixed(3) } Ω</td>
-            <td>{ isNaN(t1.toFixed(3)) ? 0 : t1.toFixed(3) } V</td>
-            <td>{ isNaN(i1.toFixed(3)) ? 0 : i1.toFixed(3) } A</td>
-            <td>{ isNaN(p1.toFixed(3)) ? 0 : p1.toFixed(3) } W</td>
+            <td> R1 </td>
+            <td>{ isNaN(r1) ? 0 : r1 } Ω</td>
+            <td>{ isNaN(t1) ? 0 : t1.toFixed(2) } V</td>
+            <td>{ isNaN(i1) ? 0 : i1.toFixed(2) } mA</td>
+            <td>{ isNaN(p1) ? 0 : p1.toFixed(2) } mW</td>
           </tr>
           <tr>
-            <td>R2 = { isNaN(r2.toFixed(3)) ? 0 : r2.toFixed(3) } Ω</td>
-            <td>{ isNaN(t2.toFixed(3)) ? 0 : t2.toFixed(3) } V</td>
-            <td>{ isNaN(i2.toFixed(3)) ? 0 : i2.toFixed(3) } A</td>
-            <td>{ isNaN(p2.toFixed(3)) ? 0 : p2.toFixed(3) } W</td>
+            <td> R2 </td>
+            <td>{ isNaN(r2) ? 0 : r2 } Ω</td>
+            <td>{ isNaN(t2) ? 0 : t2.toFixed(2) } V</td>
+            <td>{ isNaN(i2) ? 0 : i2.toFixed(2) } mA</td>
+            <td>{ isNaN(p2) ? 0 : p2.toFixed(2) } mW</td>
           </tr>
           <tr>
-            <td>R3 = { isNaN(r3.toFixed(3)) ? 0 : r3.toFixed(3) } Ω</td>
-            <td>{ isNaN(t3.toFixed(3)) ? 0 : t3.toFixed(3) } V</td>
-            <td>{ isNaN(i3.toFixed(3)) ? 0 : i3.toFixed(3) } A</td>
-            <td>{ isNaN(p3.toFixed(3)) ? 0 : p3.toFixed(3) } W</td>
+            <td> R3 </td>
+            <td>{ isNaN(r3) ? 0 : r3 } Ω</td>
+            <td>{ isNaN(t3) ? 0 : t3.toFixed(2) } V</td>
+            <td>{ isNaN(i3) ? 0 : i3.toFixed(2) } mA</td>
+            <td>{ isNaN(p3) ? 0 : p3.toFixed(2) } mW</td>
           </tr>
           <tr>
-            <td>Req = { isNaN(req.toFixed(3)) ? 0 : req.toFixed(3) } Ω</td>
-            <td>{ isNaN(tension.toFixed(3)) ? 0 : tension.toFixed(3) } V</td>
-            <td>{ isNaN(current.toFixed(3)) ? 0 : current.toFixed(3) } A</td>
-            <td>{ isNaN(potency.toFixed(3)) ? 0 : potency.toFixed(3) } W</td>
+            <td> Req </td>
+            <td>{ isNaN(req) ? 0 : req } Ω</td>
+            <td>{ isNaN(tension) ? 0 : tension } V</td>
+            <td>{ isNaN(current) ? 0 : current.toFixed(2) } mA</td>
+            <td>{ isNaN(power) ? 0 : power.toFixed(2) } mW</td>
           </tr>
         </tbody>
       </table>

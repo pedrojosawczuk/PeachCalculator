@@ -1,12 +1,12 @@
 <p align="center">
   <img align="center" width="100px" height="100px" src="src/logo.png">
-  <h1 align="center">Peach Calculator<h3 align="center">Calculator of Equivalent Resistance, power, Currents and Voltages over resistors R1, R2 and R3. 👨‍💻</h3>
+  <h1 align="center">Peach Calculator<h3 align="center">Calculator of Equivalent Resistance, Power, Currents and Voltages over resistors R1, R2 and R3. 👨‍💻</h3>
 </p>
 
 ## ScreenShot
   <h5 align="center">Light / Dark</h5>
-  <img alt="Peach Light" width="49%" src="screenshots/light.png"/>
-  <img alt="Peach Dark" width="49%" src="screenshots/dark.png"/>
+  <img alt="Peach Light" width="48%" src="screenshots/light.png"/>
+  <img alt="Peach Dark" width="48%" src="screenshots/dark.png"/>
 
   <h5 align="center">Result</h5>
   
@@ -23,4 +23,4 @@
 
 ## Output
 
-- Table with the values of equivalent resistance, voltage, current and power in each resistor
+- Table with the values of equivalent resistance, voltages, currents and power in each resistor
