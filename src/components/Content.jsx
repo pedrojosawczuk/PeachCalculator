@@ -15,8 +15,10 @@ function Content() {
   const [output, setOutput] = useState(0);
 
   const handleChange = (event) => {
-    const min = 1, max = 10000;
+    const min = 1, max = 9999;
 
+    setOutput(0)
+    
     switch(event.target.name) {
       case 'r1':
         setR1(parseFloat(validate(event, min, max)))
@@ -39,9 +41,9 @@ function Content() {
     }
 
     // Show/Hide Submit Button //
-    if ( r1 >= min && r1 < max ) {
-      if ( r2 >= min && r2 < max ) {
-        if ( r3 >= min && r3 < max ) {
+    if ( r1 >= min && r1 <= max ) {
+      if ( r2 >= min && r2 <= max ) {
+        if ( r3 >= min && r3 <= max ) {
           if ( tension >= min && tension <= 12 ) {
             setBtnDisabled(false)
             console.log('BtnDisabled:' + btnDisabled)
