@@ -13,7 +13,7 @@ function InputNumber({ id_name, min, max, placeholder, title, onChange }) {
         required
         onChange={ onChange }
       />
-      <span class='placeholder disable-select'>{ placeholder }</span>
+      <span className='placeholder disable-select'>{ placeholder }</span>
     </label>
   )
 }
@@ -24,7 +24,7 @@ InputNumber.propTypes = {
   max: PropTypes.number,
   placeholder: PropTypes.string,
   title: PropTypes.string,
-  onChange: PropTypes.string,
+  onChange: PropTypes.func,
 }
 
 export default InputNumber
