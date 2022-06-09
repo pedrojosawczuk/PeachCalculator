@@ -106,6 +106,7 @@ function Content() {
     setTension(0)
     setCircuit('S')
     setBtnDisabled(true)
+    setErrorMessage(null)
     document.getElementById('r1').value = 0
     document.getElementById('r2').value = 0
     document.getElementById('r3').value = 0
