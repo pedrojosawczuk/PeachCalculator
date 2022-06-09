@@ -121,22 +121,22 @@ function Content() {
       {/* Resistors Input */}
       <div className="row">
         <InputNumber id_name='r1'
-          min='1'
-          max='9999'
+          min={ 1 }
+          max={ 9999 }
           placeholder='Resistor 1'
           title='Value Between 1Ω and 9999Ω'
           onChange={ handleChange }
         />
         <InputNumber id_name='r2'
-          min='1'
-          max='9999'
+          min={ 1 }
+          max={ 9999 }
           placeholder='Resistor 2'
           title='Value Between 1Ω and 9999Ω'
           onChange={ handleChange }
         />
         <InputNumber id_name='r3'
-          min='1'
-          max='9999'
+          min={ 1 }
+          max={ 9999 }
           placeholder='Resistor 3'
           title='Value Between 1Ω and 9999Ω'
           onChange={ handleChange }
@@ -144,8 +144,8 @@ function Content() {
       </div>
       <div className="row">
         <InputNumber id_name='tension'
-          min='1'
-          max='12'
+          min={ 1 }
+          max={ 12 }
           placeholder='Tension'
           title='Value Between 1V and 12V'
           onChange={ handleChange }
