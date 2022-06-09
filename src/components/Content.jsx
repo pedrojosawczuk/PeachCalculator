@@ -126,21 +126,21 @@ function Content() {
           placeholder='Resistor 1'
           title='Value Between 1Ω and 9999Ω'
           onChange={ handleChange }
-          />
+        />
         <InputNumber id_name='r2'
           min='1'
           max='9999'
           placeholder='Resistor 2'
           title='Value Between 1Ω and 9999Ω'
           onChange={ handleChange }
-          />
+        />
         <InputNumber id_name='r3'
           min='1'
           max='9999'
           placeholder='Resistor 3'
           title='Value Between 1Ω and 9999Ω'
           onChange={ handleChange }
-          />
+        />
       </div>
       <div className="row">
         <InputNumber id_name='tension'
@@ -149,7 +149,7 @@ function Content() {
           placeholder='Tension'
           title='Value Between 1V and 12V'
           onChange={ handleChange }
-          />
+        />
       </div>
       <Output
         displayOutput={ output }
@@ -157,7 +157,8 @@ function Content() {
         r1={ r1 }
         r2={ r2 }
         r3={ r3 }
-        tension={ tension } />
+        tension={ tension }
+      />
       {/* Circuit Type Input */}
       <div className="row">
         <label className="custom-field">
@@ -169,7 +170,11 @@ function Content() {
           </select>
         </label>
       </div>
-      { errorMessage && <div className='errormessage'> { errorMessage }</div>}
+      { errorMessage &&
+        <div className="row">
+          <div className='errormessage'>{ errorMessage }</div>
+        </div>
+      }
       {/* Submit and Reset Buttons */}
       <div className="row">
         <label className="custom-field">

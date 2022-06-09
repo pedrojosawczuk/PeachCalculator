@@ -12,6 +12,7 @@ Green
 */
 :root {
   --first-color: rgba(250, 128, 137, 1);
+  --first-background: rgba(250, 128, 137, .5);
   --second-color: rgba(250, 74, 88, 1);
   --third-color: rgba(162, 229, 64, 1);
   --fourth-color: rgba(130, 182, 51, 1);
@@ -27,7 +28,6 @@ Green
 }
 body {
   margin: 0;
-  padding: 10;
   width: 100vw;
   height: 100%;
   background-color: var(--background2);
@@ -37,6 +37,7 @@ body {
   display: flex;
   flex-direction: column;
   width: 100vw;
+  padding: 2vh;
   min-height: 100vh;
   align-items: center;
   justify-content: flex-start;
@@ -49,10 +50,6 @@ body {
   max-width: 700px;
   display: flex;
   margin: auto;
-  /*
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  */
   align-items: center;
   flex-direction: column;
   justify-content: center;
@@ -89,20 +86,28 @@ header {
   gap: 1rem;
 }
 
+*, *::before, *::after {
+	box-sizing: border-box;
+}
 .custom-field, option {
   position: relative;
   font-size: 1.25rem;
-  /*padding-top: 10px;
+  /*
+  padding-top: 10px;
   margin-bottom: 5px;*/
 }
 .custom-field input, select, button{
   border: none;
+	-webkit-appearance: none;
+	-ms-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
   color: var(--first-color);
-  padding: 1rem;
-  border-radius: 1.5rem;
+  padding: 2vh;
+  border-radius: 1vw;
   background-color: transparent;
   border: 2px solid var(--background);
-  min-width: 9rem;
+  min-width: 8rem;
   outline: none;
 }
 .custom-field {
@@ -112,6 +117,28 @@ header {
   border-color: var(--first-color);
   transition-delay: 0.1s;
 }
+.custom-field .placeholder {
+	position: absolute;
+  left: 0.75rem;
+	top: calc(50%);
+	transform: translateY(-50%);
+	color: var(--background);
+	transition:
+		top 0.3s ease,
+		font-size 0.3s ease,
+		color 0.3s ease;
+}
+.custom-field input:valid + .placeholder,
+.custom-field input:focus + .placeholder {
+	top: 0rem;
+  left: 0.75rem;
+	font-size: 1rem;
+	color: var(--first-color);
+  padding: 0 .5rem;
+  background-color: var(--background2);
+  transition-delay: 0.1s;
+}
+
 /* Hide Arrow Down nad Arrow Up, on input[type=number] */
 input[type="number"] {
   -webkit-appearance: textfield;
@@ -122,6 +149,7 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none;
 }
+
 .btn {
   cursor: pointer;
   border: none;
@@ -161,22 +189,6 @@ input[type=number]::-webkit-outer-spin-button {
 .btn-secondary:focus {
   border-color: var(--first-color);
   transition-delay: 0.1s;
-}
-
-@media(max-width: 500px) {
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-  .custom-field input, select, button {
-    padding: .75rem;
-    border-radius: 1.25rem;
-    min-width: 6rem;
-    outline: none;
-  }
-  .btn {
-    width: 5rem;
-  }
 }
 
 .title {
@@ -292,4 +304,41 @@ div.lightswitch {
 }
 .lightswitch input {
   display:none;
+}
+
+@media(max-width: 500px) {
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  .custom-field, option {
+    font-size: 1rem;
+  }
+  .custom-field input, select, button {
+    padding: 2vh;
+    border-radius: 1.5vh;
+    min-width: 9rem;
+    outline: none;
+  }
+  .custom-field input:valid + .placeholder,
+  .custom-field input:focus + .placeholder {
+    top: 0rem;
+    left: 0.5rem;
+    font-size: .75rem;
+    padding: 0 .25rem;
+  }
+  .btn {
+    width: 5rem;
+  }
+  table, th, td {
+    text-align: center;
+    padding: .2rem;
+    border: 2px solid var(--background);
+  }
+}
+.disable-select {
+  -webkit-user-select: none;  
+  -moz-user-select: none;    
+  -ms-user-select: none;      
+  user-select: none;
 }

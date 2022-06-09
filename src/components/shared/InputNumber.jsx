@@ -9,11 +9,11 @@ function InputNumber({ id_name, min, max, placeholder, title, onChange }) {
         name={ id_name }
         min={ min }
         max={ max }
-        placeholder={ placeholder }
         title={ title }
         required
         onChange={ onChange }
       />
+      <span class='placeholder disable-select'>{ placeholder }</span>
     </label>
   )
 }
