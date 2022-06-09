@@ -71,10 +71,10 @@ function Output({ displayOutput, circuit, r1, r2, r3, tension }) {
         <thead>
           <tr>
             <th></th>
-            <th> Resistance <br/> Ω </th>
-            <th> Tension <br/> V </th>
-            <th> Current <br/> mA </th>
-            <th> Power <br/> mW </th>
+            <th> Resistance </th>
+            <th> Tension </th>
+            <th> Current </th>
+            <th> Power </th>
           </tr>
         </thead>
         <tbody>
