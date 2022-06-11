@@ -36,8 +36,7 @@ function Output({ displayOutput, circuit, r1, r2, r3, tension }) {
       req = 1 / (
           (1 / r1) +
           (1 / r2) +
-          (1 / r3)
-        );
+          (1 / r3));
       current = (tension / req) * 1000;
       t1 = t2 = t3 = tension;
       i1 = (t1 / r1) * 1000;
@@ -51,6 +50,21 @@ function Output({ displayOutput, circuit, r1, r2, r3, tension }) {
 
     case 'M1':
       //console.log("M1 - Combinations of Series and Parallel 1");
+      req = r1 + 1 / (
+        (1 / r2) +
+        (1 / r3));
+      current = (tension / req) * 1000;
+      i1 = current;
+      t1 = (r1 * i1) / 1000;
+      t2 = t3 = tension - t1;
+      
+      i2 = (t2 / r2) * 1000;
+      i3 = (t3 / r3) * 1000;
+      
+      p1 = t1 * i1;
+      p2 = t2 * i2;
+      p3 = t3 * i3;
+      power = tension * current;
       break;
 
     case 'M2':
