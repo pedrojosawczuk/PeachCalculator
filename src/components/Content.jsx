@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Output from './Output';
 import Button from './shared/Button';
 import InputNumber from './shared/InputNumber';
+import ShowCircuit from './ShowCircuit';
 
 function Content() {
   const [r1, setR1] = useState(0);
@@ -17,9 +18,8 @@ function Content() {
 
   const handleChange = (event) => {
     const min = 1, max = 9999;
-
     setOutput(0)
-    
+
     switch(event.target.name) {
       case 'r1':
         setR1(parseFloat(validate(event, min, max)))
@@ -66,7 +66,7 @@ function Content() {
     }
   }
   const validate = (event, min, max) => {
-    if (event.target.value % 1 == 0) {
+    if (event.target.value % 1 === 0) {
       if ( event.target.value >= min && event.target.value <= max ){
         setErrorMessage(null)
         return event.target.value
@@ -169,6 +169,9 @@ function Content() {
             <option value='M2'>Combinations of Series and Parallel 2</option>
           </select>
         </label>
+      </div>
+      <div className="row">
+        <ShowCircuit circuit={ circuit } alt='Circuit ' />
       </div>
       { errorMessage &&
         <div className="row">
