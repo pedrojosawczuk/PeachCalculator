@@ -17,7 +17,6 @@ Green
   --third-color: rgba(162, 229, 64, 1);
   --fourth-color: rgba(130, 182, 51, 1);
 }
-
 .container-light {
   --background: rgba(221, 221, 221, 1);
   --background2: rgba(255, 255, 255, 1);
@@ -77,6 +76,10 @@ header {
   max-width: 70px;
 }
 
+.circuit-image {
+  width: 70%;
+}
+
 .row {
   padding: 10px;
   display: flex;
@@ -96,7 +99,21 @@ header {
   padding-top: 10px;
   margin-bottom: 5px;*/
 }
-.custom-field input, select, button{
+.custom-field {
+  --draw-easing: .3s;
+}
+.custom-field .placeholder {
+	position: absolute;
+  left: 0.75rem;
+	top: calc(50%);
+	transform: translateY(-50%);
+	color: var(--background);
+	transition:
+		top 0.3s ease,
+		font-size 0.3s ease,
+		color 0.3s ease;
+}
+.custom-field input, select {
   border: none;
 	-webkit-appearance: none;
 	-ms-appearance: none;
@@ -110,23 +127,9 @@ header {
   min-width: 8rem;
   outline: none;
 }
-.custom-field {
-  --draw-easing: .3s;
-}
 .custom-field input:focus, select:focus {
   border-color: var(--first-color);
   transition-delay: 0.1s;
-}
-.custom-field .placeholder {
-	position: absolute;
-  left: 0.75rem;
-	top: calc(50%);
-	transform: translateY(-50%);
-	color: var(--background);
-	transition:
-		top 0.3s ease,
-		font-size 0.3s ease,
-		color 0.3s ease;
 }
 .custom-field input:valid + .placeholder,
 .custom-field input:focus + .placeholder {
@@ -153,11 +156,15 @@ input[type=number]::-webkit-outer-spin-button {
 .btn {
   cursor: pointer;
   border: none;
-  -webkit-appearance: none;
-  -ms-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  width: 6rem;
+	-webkit-appearance: none;
+	-ms-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+  color: var(--first-color);
+  padding: 1.5vw 3vh;
+  border-radius: 1vw;
+  background-color: transparent;
+  border: 2px solid var(--background);
   outline: none;
 }
 .btn:disabled,
@@ -172,13 +179,13 @@ input[type=number]::-webkit-outer-spin-button {
     var(--second-color), var(--first-color));
 }
 .btn-primary:focus {
-  border-color: var(--background);
+  border-color: var(--first-color);
   transition-delay: 0.1s;
 }
 .btn-primary:disabled,
 .btn-primary[disabled] {
   color: var(--background2);
-  border: 2px solid var(--background2);
+  border: 2px solid var(--background);
   background: var(--background);
 }
 .btn-secondary {
@@ -314,7 +321,7 @@ div.lightswitch {
   .custom-field, option {
     font-size: 1rem;
   }
-  .custom-field input, select, button {
+  .custom-field input, select {
     padding: 2vh;
     border-radius: 1.5vh;
     min-width: 9rem;
@@ -328,12 +335,16 @@ div.lightswitch {
     padding: 0 .25rem;
   }
   .btn {
+    padding: 1vh 2vh;
     width: 5rem;
   }
   table, th, td {
     text-align: center;
     padding: .2rem;
     border: 2px solid var(--background);
+  }
+  .circuit-image {
+    width: 100%;
   }
 }
 .disable-select {
