@@ -10,20 +10,25 @@ Green
 #8CC636 = rgba(140, 198, 54, 1)
 #82B633 = rgba(130, 182, 51, 1)
 */
-:root {
-  --first-color: rgba(250, 128, 137, 1);
-  --first-background: rgba(250, 128, 137, .5);
-  --second-color: rgba(250, 74, 88, 1);
-  --third-color: rgba(162, 229, 64, 1);
-  --fourth-color: rgba(130, 182, 51, 1);
+@media (prefers-color-scheme: light) {
+  :root {
+    --first-color: rgba(250, 128, 137, 1);
+    --second-color: rgba(250, 74, 88, 1);
+    --third-color: rgba(162, 229, 64, 1);
+    --fourth-color: rgba(130, 182, 51, 1);
+    --background: rgba(221, 221, 221, 1);
+    --background2: rgba(255, 255, 255, 1);
+  }
 }
-.container-light {
-  --background: rgba(221, 221, 221, 1);
-  --background2: rgba(255, 255, 255, 1);
-}
-.container-dark {
-  --background: rgba(51, 51, 51, 1);
-  --background2: rgba(17, 17, 17, 1);
+@media (prefers-color-scheme: dark) {
+  :root {
+    --first-color: rgba(250, 128, 137, 1);
+    --second-color: rgba(250, 74, 88, 1);
+    --third-color: rgba(162, 229, 64, 1);
+    --fourth-color: rgba(130, 182, 51, 1);
+    --background: rgba(51, 51, 51, 1);
+    --background2: rgba(17, 17, 17, 1);
+  }
 }
 body {
   margin: 0;

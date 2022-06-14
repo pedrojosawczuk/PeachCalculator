@@ -48,20 +48,16 @@ function Content() {
           if ( tension >= min && tension <= 12 ) {
             setBtnDisabled(false)
             console.log('BtnDisabled:' + btnDisabled)
-          }
-          else {
+          } else {
             setBtnDisabled(true)
           }
-        }
-        else {
+        } else {
           setBtnDisabled(true)
         }
-      }
-      else {
+      } else {
         setBtnDisabled(true)
       }
-    }
-    else {
+    } else {
       setBtnDisabled(true)
     }
   }
@@ -70,14 +66,12 @@ function Content() {
       if ( event.target.value >= min && event.target.value <= max ){
         setErrorMessage(null)
         return event.target.value
-      }
-      else {
+      } else {
         event.target.value = ''
         setErrorMessage(`ERROR: ${ event.target.name.charAt(0).toUpperCase() + event.target.name.slice(1) } Value is not Between ${ min } and ${ max }!`)
         return event.target.value = ''
       }
-    }
-    else {
+    } else {
       setErrorMessage(`ERROR: ${ event.target.name.charAt(0).toUpperCase() + event.target.name.slice(1) } Value can't be a float number!`)
       return event.target.value = 0
     }
