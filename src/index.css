@@ -10,9 +10,11 @@ Green
 #8CC636 = rgba(140, 198, 54, 1)
 #82B633 = rgba(130, 182, 51, 1)
 */
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 @media (prefers-color-scheme: light) {
   :root {
-    --first-color: rgba(250, 128, 137, 1);
+    --first-color: rgba(248, 47, 64, 1);
     --second-color: rgba(250, 74, 88, 1);
     --third-color: rgba(162, 229, 64, 1);
     --fourth-color: rgba(130, 182, 51, 1);
@@ -29,6 +31,9 @@ Green
     --background: rgba(51, 51, 51, 1);
     --background2: rgba(17, 17, 17, 1);
   }
+}
+:root {
+  --border-radius: 1rem;
 }
 body {
   margin: 0;
@@ -95,6 +100,7 @@ header {
 }
 
 *, *::before, *::after {
+  font-family: 'Poppins';
 	box-sizing: border-box;
 }
 .custom-field, option {
@@ -109,7 +115,8 @@ header {
 }
 .custom-field .placeholder {
 	position: absolute;
-  left: 0.75rem;
+  font-size: 1rem;
+  left: 1rem;
 	top: calc(50%);
 	transform: translateY(-50%);
 	color: var(--background);
@@ -119,14 +126,15 @@ header {
 		color 0.3s ease;
 }
 .custom-field input, select {
+  font-size: 1rem;
   border: none;
 	-webkit-appearance: none;
 	-ms-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
   color: var(--first-color);
-  padding: 2vh;
-  border-radius: 1vw;
+  padding: 1.75vh 2vh;
+  border-radius: var(--border-radius);
   background-color: transparent;
   border: 2px solid var(--background);
   min-width: 8rem;
@@ -139,10 +147,10 @@ header {
 .custom-field input:valid + .placeholder,
 .custom-field input:focus + .placeholder {
 	top: 0rem;
-  left: 0.75rem;
+  left: .50rem;
 	font-size: 1rem;
 	color: var(--first-color);
-  padding: 0 .5rem;
+  padding: 0 .25rem;
   background-color: var(--background2);
   transition-delay: 0.1s;
 }
@@ -167,7 +175,7 @@ input[type=number]::-webkit-outer-spin-button {
 	appearance: none;
   color: var(--first-color);
   padding: 1.5vh 3vh;
-  border-radius: 1vw;
+  border-radius: var(--border-radius);
   background-color: transparent;
   border: 2px solid var(--background);
   outline: none;
@@ -235,10 +243,18 @@ select::selection{
   display: block;
 }
 
-table, th, td {
+table, tr {
   text-align: center;
-  padding: .5rem;
+  padding: .35rem .50rem;
+  border-radius: var(--border-radius);
   border: 2px solid var(--background);
+}
+th, td {
+  text-align: center;
+  padding: .35rem .50rem;
+}
+td:first-child {
+  font-weight: bold;
 }
 
 footer {
@@ -273,49 +289,14 @@ a:visited {
 }
 
 .errormessage {
+  width: 100%;
+  font-size: 1rem;
+  padding: .75rem;
   text-align: center;
   font-weight: bold;
-  color: var(--second-color);
-}
-div.switch {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin-top: 30px;
-  transform:translate(-50%,-50%);
-}
-div.lightswitch {
-  margin: .25rem;
-}
-.lightswitch label {
-  display: block;
-  width: 4.0rem;
-  height: 2rem;
-  background: #aaa;
-  border-radius: 2.50rem;
-  transition:all 300ms linear;
-}
-.lightswitch label:before {
-  position: relative;
-  content: "";
-  width: 1.50rem;
-  height: 1.50rem;
-  background: var(--background2);
-  display: block;
-  border-radius: 50px;
-  top: 3px;
-  left: 5px;
-  transition: all 300ms linear;
-  content: "🌛";
-}
-.lightswitch input:checked + label {
-  background: var(--background);
-}
-.lightswitch input:checked + label:before {
-  left: 35px;
-}
-.lightswitch input {
-  display:none;
+  border-radius: var(--border-radius);
+  color: var(--background2);
+  background: var(--second-color);
 }
 
 @media(max-width: 500px) {
@@ -328,7 +309,7 @@ div.lightswitch {
   }
   .custom-field input, select {
     padding: 2vh;
-    border-radius: 1.5vh;
+    border-radius: var(--border-radius);
     min-width: 9rem;
     outline: none;
   }
@@ -339,14 +320,15 @@ div.lightswitch {
     font-size: .75rem;
     padding: 0 .25rem;
   }
-  .btn {
-    padding: 1vh 2vh;
-    width: 5rem;
-  }
-  table, th, td {
+  table, tr {
     text-align: center;
-    padding: .2rem;
+    padding: .35rem .35rem;
+    border-radius: var(--border-radius);
     border: 2px solid var(--background);
+  }
+  th, td {
+    text-align: center;
+    padding: .35rem .35rem;
   }
   .circuit-image {
     width: 100%;
