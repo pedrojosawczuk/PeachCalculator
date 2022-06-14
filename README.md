@@ -5,12 +5,9 @@
 
 ## ScreenShot
   <h5 align="center">Light / Dark</h5>
-  <img alt="Peach Light" width="48%" src="screenshots/light.png"/>
-  <img alt="Peach Dark" width="48%" src="screenshots/dark.png"/>
+  <img alt="Peach Light / Dark" width="100%" src="screenshots/lightdark.png"/>
   <h5 align="center">Result</h5>
-  <img alt="Peach Light" width="48%" src="screenshots/light-result.png"/>
-  <img alt="Peach Dark" width="48%" src="screenshots/dark-result.png"/>
-  
+  <img alt="Peach Light / Dark Result" width="100%" src="screenshots/lightdark-result.png"/>
 
 ## Input
 
