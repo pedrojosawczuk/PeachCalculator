@@ -110,10 +110,9 @@ function Content() {
 
   return (
   <div className="content">
-    <p className="desc">Calculator of Equivalent Resistance, Power, Currents and Voltages over resistors R1, R2 and R3.</p>
     <form onSubmit={ handleSubmit } onReset={ handleReset }>
       {/* Resistors Input */}
-      <div className="row">
+      <div className="column1">
         <InputNumber id_name='r1'
           min={ 1 }
           max={ 9999 }
@@ -135,8 +134,6 @@ function Content() {
           title='Value Between 1Ω and 9999Ω'
           onChange={ handleChange }
         />
-      </div>
-      <div className="row">
         <InputNumber id_name='tension'
           min={ 1 }
           max={ 12 }
@@ -144,18 +141,18 @@ function Content() {
           title='Value Between 1V and 12V'
           onChange={ handleChange }
         />
+        { errorMessage &&
+        <div className="row">
+          <div className='errormessage'>{ errorMessage }</div>
+        </div>
+      }
       </div>
-      <Output
-        displayOutput={ output }
-        circuit={ circuit }
-        r1={ r1 }
-        r2={ r2 }
-        r3={ r3 }
-        tension={ tension }
-      />
+
       {/* Circuit Type Input */}
-      <div className="row">
+      <div className="column2">
+    <p className="desc">Calculator of Equivalent Resistance, Power, Currents and Voltages over resistors R1, R2 and R3.</p>
         <label className="custom-field">
+    <ShowCircuit circuit={ circuit } alt='Circuit ' />
           <select id='circuits' name="circuits" required onChange={ handleChange }>
             <option value='S'>Series</option>
             <option value='P'>Parallel</option>
@@ -163,15 +160,6 @@ function Content() {
             <option value='M2'>Combinations of Series and Parallel 2</option>
           </select>
         </label>
-      </div>
-      <div className="row">
-        <ShowCircuit circuit={ circuit } alt='Circuit ' />
-      </div>
-      { errorMessage &&
-        <div className="row">
-          <div className='errormessage'>{ errorMessage }</div>
-        </div>
-      }
       {/* Submit and Reset Buttons */}
       <div className="row">
         <label className="custom-field">
@@ -180,8 +168,17 @@ function Content() {
         <label className="custom-field">
           <Button type='reset' version='secondary' >Reset</Button>
         </label>
+        </div>
       </div>
     </form>
+    <Output
+        displayOutput={ output }
+        circuit={ circuit }
+        r1={ r1 }
+        r2={ r2 }
+        r3={ r3 }
+        tension={ tension }
+      />
   </div>
   )
 }
