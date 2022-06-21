@@ -3,8 +3,10 @@ import PropTypes from 'prop-types'
 function Header({ logo, title}) {
   return (
     <header>
-      <img src={ logo } className="logo" alt="Peach Icons" />
-      <p className="title">{ title }</p>
+      <div>
+        <img src={ logo } className="logo" alt="Peach Icons" />
+        <p className="title">{ title }</p>
+      </div>
     </header>
   )
 }
