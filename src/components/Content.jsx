@@ -68,13 +68,16 @@ function Content() {
         return event.target.value
       } else {
         event.target.value = ''
-        setErrorMessage(`ERROR: ${ event.target.name.charAt(0).toUpperCase() + event.target.name.slice(1) } Value is not Between ${ min } and ${ max }!`)
+        setErrorMessage(`Value Must Be Between ${ min } and ${ max }!`)
         return event.target.value = ''
       }
     } else {
-      setErrorMessage(`ERROR: ${ event.target.name.charAt(0).toUpperCase() + event.target.name.slice(1) } Value can't be a float number!`)
-      return event.target.value = 0
+      setErrorMessage(`Value Must Be Integer!`)
+      return event.target.value = ''
     }
+  }
+  const valueIsValidNumber = (event) => {
+    return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'
   }
 
   const handleSubmit = event => {
